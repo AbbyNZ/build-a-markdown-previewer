@@ -16,26 +16,20 @@ class UserInput extends React.Component {
   render() {
     return (
       <div>
-        <div className="left">
+        <div>
           <textarea id="editor" 
       value = {this.state.markdown}
       onChange = {this.handleChange}
       type = "text"
       className = "markdown-input"></textarea>
         </div>
-        <div className="right">
+        <div>
           <div id="preview" dangerouslySetInnerHTML={{__html: marked(this.state.markdown)}}></div>
         </div>
       </div>  
     );
   }
 };
-
-/*const MarkdownPreviewer = () => {
-  return (
-    <div id="preview" dangerouslySetInnerHTML={{__html:marked(this.props.markdown)}}></div>
-  );
-};*/
 
 class MarkdownApp extends React.Component {
    render() {
@@ -89,14 +83,16 @@ And here. | Okay. | I think we get it.
      - With different indentation levels.
         - That look like this.
 
-
 1. And there are numbererd lists too.
 1. Use just 1s if you want! 
 1. But the list goes on...
 - Even if you use dashes or asterisks.
-* And last but not least, let's not forget embedded images:
+* And last but not least, let's not forget embedded images: 
+![React Logo w/ Text](https://goo.gl/Umyytc)`;
 
-![React Logo w/ Text](https://goo.gl/Umyytc)
-`;
+// interprets carriage returns and renders them as br(line break) elements
+marked.setOptions({
+  breaks: true,
+});
 
 ReactDOM.render(<MarkdownApp />, document.getElementById('app'));
