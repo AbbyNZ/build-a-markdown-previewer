@@ -29,14 +29,17 @@ body {
   overflow: auto;
 }
 
-/*.left {
-  position: relative;
-  float: left;
-  width: 45%;
-}
-
-.right {
-  position: relative;
-  float: right;
-  width: 45%;
-}*/
+@media screen and (max-width: 500px) {
+  .markdown-input {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  #preview {
+    width: 100%;
+  }
+  
+  img {
+    height: 200px;
+  }
+};
